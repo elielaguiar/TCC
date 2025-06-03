@@ -9,8 +9,9 @@ def carregar_documentos_json(caminho_arquivo):
     for item in dados:
         conteudo = item.get("conteudo", "")
         metadata = {
-            "titulo": item.get("titulo", ""),
-            "id": item.get("id", "")
+            "url": item.get("url", ""),
+            # "titulo": item.get("titulo", ""),
+            # "id": item.get("id", "")
         }
         documentos.append(Document(page_content=conteudo, metadata=metadata))
     
