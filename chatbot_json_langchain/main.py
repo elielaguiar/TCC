@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from loader import carregar_documentos_json
 from embedding_store import criar_chroma, carregar_chroma
@@ -12,14 +12,16 @@ def criar_chatbot():
     
     if not os.path.exists(persist_dir) or not os.listdir(persist_dir):
         print("🔄 Criando base vetorial...")
-        documentos = carregar_documentos_json("dados/conteudofinal.json")
+        documentos = carregar_documentos_json("dados/conteudo_paginas_tratado.json")
+        print(documentos)
         vectorstore = criar_chroma(documentos, persist_dir)
     else:
         print("✅ Carregando base vetorial existente...")
         vectorstore = carregar_chroma(persist_dir)
 
+
     retriever = vectorstore.as_retriever()
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo")
+    llm = ChatOpenAI(model_name="gpt-4o-mini")
     chain = RetrievalQA.from_chain_type(llm=llm, retriever=retriever, return_source_documents=True)
     
     return chain

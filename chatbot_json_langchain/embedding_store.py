@@ -1,5 +1,5 @@
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
 
 def criar_chroma(documentos, persist_dir="chroma_db"):
     embeddings = OpenAIEmbeddings()
