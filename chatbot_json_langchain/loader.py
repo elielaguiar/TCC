@@ -1,5 +1,5 @@
 import json
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 def carregar_documentos_json(caminho_arquivo):
     with open(caminho_arquivo, 'r', encoding='utf-8') as f:
@@ -10,7 +10,7 @@ def carregar_documentos_json(caminho_arquivo):
         conteudo = item.get("conteudo", "")
         metadata = {
             "url": item.get("url", ""),
-            # "titulo": item.get("titulo", ""),
+            "titulo": item.get("titulo", "")
             # "id": item.get("id", "")
         }
         documentos.append(Document(page_content=conteudo, metadata=metadata))
