@@ -1,0 +1,6 @@
+chroma_db/
+__pycache__/
+.env
+chatbot_json_langchain/chroma_db/chroma.sqlite3
+chatbot_json_langchain/chroma_db/
+*.sqlite3
