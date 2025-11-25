@@ -1,0 +1,10 @@
+# Ignorar banco do ChromaDB
+chroma_db/
+chatbot_json_langchain/chroma_db/
+*.sqlite3
+
+# Cache Python
+__pycache__/
+
+# Variáveis de ambiente
+.env
